@@ -28,7 +28,7 @@
 
     <link rel="icon" href="images/icon.png" type="image/x-icon">
 
-    <script src="js/auth/login.js" type="module" defer></script>
+    <script src="js/auth/superlogin.js" type="module" defer></script>
     <script src="js/utils/utils.js" type="module" defer></script>
     <script src="js/router/router.js" type="module" defer></script>
     
@@ -56,7 +56,7 @@
                                 <div class="card-body">
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your email & password to login</p>
+                                        <p class="text-center small">Enter your username & password to login</p>
                                     </div>
                                     <!-- Notification -->
                                     <div class="alert alert-success d-none" role="alert"></div>
@@ -66,10 +66,10 @@
                                         
                                         <!-- Username Field -->
                                         <div class="col-12">
-                                            <label for="email" class="form-label">Email </label>
+                                            <label for="username" class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <!-- Dapat ang name sa input ibagay sa key nga naa sa db or postman -->
-                                                <input type="text" name="email" class="form-control" id="Username       " required/>
+                                                <input type="text" name="username" class="form-control" id="Username       " required/>
                                                 <div class="invalid-feedback">Please enter your username.</div>
                                             </div>
                                         </div>

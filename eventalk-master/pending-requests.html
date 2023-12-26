@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EventEase - Oranizer</title>
+    <title>EventEase - Organizer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -21,190 +21,147 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+
+    <script src="js/utils/utils.js" type="module" defer></script>
   </head>
   <body>
     
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="">Event<span>Ease.</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="">Event<span>Ease.</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-			  <li class="nav-item active"><a href="eventcreate.html" class="nav-link">Event Creation</a></li>
-	          <li class="nav-item active"><a href="" class="nav-link">Schedule</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="index.html" class="nav-link">Logout</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="pending-requests.html" class="nav-link">Pending Events</a></li>
+            <li class="nav-item active"><a href="admin-dashboard.html" class="nav-link">Schedule</a></li>
+            <li class="nav-item cta mr-md-2"><a href="index.html" class="nav-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <!-- END nav -->
 
-    
     <section class="ftco-section bg-light">
-			<div class="container">
-				<div class="row justify-content-center mb-5 pb-3">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 text-center heading-section ftco-animate">
-          	<span class="subheading">Schedule</span>
-            <h2 class="mb-4"><span>Event</span> Schedule</h2>
+            <span class="subheading">For approval</span>
+            <h2 class="mb-4"><span>Pending</span>Events</h2>
           </div>
         </div>
-        <div class="ftco-search">
-					<div class="row">
-            <div class="col-md-12 nav-link-wrap">
-	            <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-	              <a class="nav-link ftco-animate active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">{{date}}</a>
-
-	              <a class="nav-link ftco-animate" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">{{date}}</a>
-
-	              <a class="nav-link ftco-animate" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">{{date}}</a>
-
-	              <a class="nav-link ftco-animate" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">{{date}}</a>
-
-	            </div>
-	          </div>
-	          <div class="col-md-12 tab-wrap">
-	            
-	            <div class="tab-content" id="v-pills-tabContent">
-					
-					<!-- Current Date -->
-	              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-	              			<span class="time">{{time}}</span>
-	              			<h2><a href="#">{{event_name}}</a></h2>
-	              			<p>{{event_desc}}</p>
-	              		</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-	              		</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-	              		</div>
-	              	</div>
-	              </div>
-				  	<!-- Current Date + 1 -->
-	              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              </div>
-				   <!-- Current Date + 2 -->
-	              <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              </div>
-				   <!-- Current Date + 3 -->
-	              <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-day-4-tab">
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              	<div class="speaker-wrap ftco-animate d-flex">
-	              		<div class="text pl-md-5">
-							<span class="time">{{time}}</span>
-							<h2><a href="#">{{event_name}}</a></h2>
-							<p>{{event_desc}}</p>
-						</div>
-	              	</div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
+        <!-- Pending Events Container -->
+        <div id="pendingEventsContainer" class="container ftco-animate d-flex">
+          <!-- Dynamic content will be added here -->
         </div>
-			</div>
-		</section>
+        <!-- Add more pending events here -->
+      </div>
+    </section>
 
-    <footer class="text-center">
-            <p>
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-			</p>
-    </footer>
-    
-  
+    <!-- Modal for Reject Remarks -->
+    <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rejectModalLabel">Provide Remarks for Rejection</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label for="rejectRemarks">Remarks:</label>
+            <textarea class="form-control" id="rejectRemarks" rows="4"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="submitRejectRemarks()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/jquery.timepicker.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fetch data from the backend
+        fetch('/api/getPendingEvents')
+            .then(response => response.json())
+            .then(data => {
+                // Loop through each event and create HTML elements
+                data.forEach(event => {
+                    createEventElement(event);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    function createEventElement(event) {
+        // Create elements for each event
+        var eventElement = document.createElement('div');
+        eventElement.classList.add('speaker-wrap', 'ftco-animate', 'd-flex');
+        eventElement.innerHTML = `
+            <div class="text pl-md-5">
+                <span class="time">${event.time}</span>
+                <h2><a href="#">${event.event_name}</a></h2>
+                <p>${event.event_desc}</p>
+                <p>${event.venue_name}</p>
+                <div class="buttons text-right">
+                    <button class="btn btn-success" onclick="approveEvent('${event.id}')">Approve</button>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#rejectModal" data-eventid="${event.id}">Reject</button>
+                </div>
+            </div>
+        `;
+
+        // Append the event element to the container
+        document.querySelector('.container').appendChild(eventElement);
+    }
+
+    function approveEvent(eventId) {
+        // Implement the logic to approve the event
+        // You may want to send a request to your backend to update the event status
+        console.log('Event Approved:', eventId);
+    }
+
+    function submitRejectRemarks() {
+        // Get the event ID and remarks
+        var eventId = document.querySelector('#rejectModal').getAttribute('data-eventid');
+        var remarks = document.querySelector('#rejectRemarks').value;
+
+        // Implement the logic to submit rejection remarks
+        // You may want to send a request to your backend to update the event status and add remarks
+        console.log('Event Rejected with Remarks:', eventId, remarks);
+
+        // Close the modal
+        $('#rejectModal').modal('hide');
+    }
+</script>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
   </body>
 </html>

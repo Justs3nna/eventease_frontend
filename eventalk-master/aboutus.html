@@ -33,20 +33,28 @@
   <body class="overflow-hidden">
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Event<span>Ease.</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="aboutus.html" class="nav-link">About Us</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="login.html" class="nav-link">Login</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+      <div class="container">
+          <a class="navbar-brand" href="index.html">Event<span>Ease.</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="oi oi-menu"></span> Menu
+          </button>
+  
+          <div class="collapse navbar-collapse" id="ftco-nav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active"><a href="aboutus.html" class="nav-link">About Us</a></li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Login
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="loginDropdown">
+                          <a class="dropdown-item" href="superlogin.html">Login as Administrator</a>
+                          <a class="dropdown-item" href="login.html">Login as Organizer</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
     <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/roland.png');" data-stellar-background-ratio="0.5">

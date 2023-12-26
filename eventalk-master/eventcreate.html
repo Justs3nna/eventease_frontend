@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+	<link rel="icon" href="images/icon.png" type="image/x-icon">
+
+	<script src="js/utils/utils.js" type="module" defer></script>
   </head>
   <body>
     
@@ -77,60 +81,28 @@
 	  <div class="form-group row">
 		<div class="col-md-6">
 		  <label for="startDate">Event Start Date</label>
-		  <input type="date" class="form-control" id="startDate">
+		  <input type="date" class="form-control" id="date_sel">
 		</div>
 		<div class="col-md-6">
 		  <label for="startTime">Event Start Time</label>
-		  <input type="time" class="form-control" id="startTime">
-		</div>
-	  </div>
-	  <div class="form-group row">
-		<div class="col-md-6">
-		  <label for="endDate">Event End Date</label>
-		  <input type="date" class="form-control" id="endDate">
-		</div>
-		<div class="col-md-6">
-		  <label for="endTime">Event End Time</label>
-		  <input type="time" class="form-control" id="endTime">
+		  <input type="time" class="form-control" id="time_sel">
 		</div>
 	  </div>
     <!-- Resources Needed -->
     <div class="form-group">
 		<label>Resources Needed</label>
-		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" id="resource1Checkbox">
-		  <label class="form-check-label" for="resource1Checkbox">{{resource_id}}</label>
-		  <input type="text" class="form-control smaller-input" id="resource" placeholder="Amount" style="display: none;">
-		</div>
-		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" id="resource2Checkbox">
-		  <label class="form-check-label" for="resource2Checkbox">{{resource_id}}</label>
-		  <input type="text" class="form-control smaller-input" id="resource" placeholder="Amount" style="display: none;">
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" id="resource1Checkbox">
-			<label class="form-check-label" for="resource1Checkbox">{{resource_id}}</label>
-			<input type="text" class="form-control smaller-input" id="resource" placeholder="Amount" style="display: none;">
-		  </div>
-		  <div class="form-check">
-			<input class="form-check-input" type="checkbox" id="resource1Checkbox">
-			<label class="form-check-label" for="resource1Checkbox">{{resource_id}}</label>
-			<input type="text" class="form-control smaller-input" id="resource" placeholder="Amount" style="display: none;">
-		  </div>
-		<!-- Add more resources as needed -->
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="resource1Checkbox">
+        <label class="form-check-label" for="resource1Checkbox">{{resource_id}}</label>
+        <span id="resource1Availability" class="ml-2 text-muted">(Availability: {{ $availability }})</span>
+        <input type="text" class="form-control smaller-input" id="resource1Amount" placeholder="Amount" style="display: none;">
+    </div>
 	  </div>
 	  <div class="form-group text-right">
 		<button type="submit" class="btn btn-primary">Request Event</button>
 	  </div>
 	</form>
   </div>
-  
-
-    <footer class="text-center">
-            <p>
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-			</p>
-    </footer>
     
   
 
