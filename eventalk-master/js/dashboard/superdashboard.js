@@ -6,7 +6,7 @@ btn_logout.onclick = async () => {
     //alert("ma click siya");
 
         // Access Logout API endpoint
-        const response = await fetch(backendURL + "/api/logout", {
+        const response = await fetch(backendURL + "/api/admin-logout", {
             //gi comment kay on default daw ang GET // refer sa video nalang if maglibog or naay utruhon basa sa notes
             //method: "POST",
           headers: {
@@ -44,7 +44,7 @@ getLoggedUser();
 
 async function getLoggedUser() {
     // Access User Profile API Endpoint
-    const response = await fetch(backendURL + "/api/organizer/show", {
+    const response = await fetch(backendURL + "/api/administrator/show", {
       headers: {
         Accept: "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -71,42 +71,3 @@ async function getLoggedUser() {
     }
   }
 
-
-
-// Get all data
-getDatas();
-
-async function getDatas() {
-    // Get API endpoint
-    const response = await fetch(backendURL + "/api/eventschedule", {
-        headers: {
-            Accept: "application/json",
-            "ngrok-skip-browser-warning": "69420",
-        },
-    });
-
-    if (response.ok) {
-        const json = await response.json();
-
-        let container = "";
-        json.forEach((element) =>  {
-            const date = new Date(element.created_at).toLocaleString();
-
-            container += 
-            `<div class="row" id="getDatas">
-              <div class="col-md-12">
-                  <div class="event-list">
-                    <p>Event ID: ${element.event_id}</p>
-                <p>Date: ${element.date_sel}</p>
-                <p>Time: ${element.time_sel}</p>
-                <hr>
-                  </div>
-              </div>
-          </div>`
-        });
-
-        document.getElementById("getDatas").innerHTML = container;
-    } else {
-        errorNotification("HTTP-Error: " + response.status);
-    }
-}

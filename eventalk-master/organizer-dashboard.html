@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/animate.css" />
 
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />  
     <link rel="stylesheet" href="css/magnific-popup.css" />
 
     <link rel="stylesheet" href="css/aos.css" />
@@ -37,7 +37,6 @@
     <script src="js/dashboard/dashboard.js" type="module" defer></script>
 
   </head>
-  <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
       id="ftco-navbar"
@@ -78,20 +77,8 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <span class="oi oi-bell"></span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <!-- Notification items will be dynamically generated here -->
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  data-toggle="modal"
-                  data-target="#notificationModal"
-                  >{{ $remark_id }}</a
-                >
-              </div>
+                <span id="user_logged"></span>
             </li>
-            <!--<li class="nav-item cta mr-md-2"><a href="{{ route('index') }}" class="nav-link">Logout</a></li>-->
             <li class="nav-item cta mr-md-2">
               <button class="btn btn-primary nav-link" id="btn_logout">Logout</button>
             </li>
@@ -103,33 +90,30 @@
 
     <section class="ftco-section bg-light">
       <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <span class="subheading">Schedule</span>
-            <h2 class="mb-4"><span>Event</span> Schedule</h2>
-          </div>
-        </div>
-        <div class="ftco-search">
-          <div class="row">
-            <div class="col-md-12 nav-link-wrap">
-              <div
-                class="nav nav-pills d-flex text-center"
-                id="v-pills-tab"
-                role="tablist"
-                aria-orientation="vertical"
-              >
-                <!-- Tabs will be dynamically generated here -->
+          <div class="row justify-content-center mb-5 pb-3">
+              <div class="col-md-7 text-center heading-section ftco-animate">
+                  <span class="subheading">Schedule</span>
+                  <h2 class="mb-4"><span>Event</span> Schedule</h2>
               </div>
-              <div class="col-md-12 tab-wrap">
-                <div class="tab-content" id="v-pills-tabContent">
-                  <!-- Tab content will be dynamically generated here -->
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
+          <!-- Notification -->
+          <div class="alert alert-success d-none" role="alert"></div>
+           <div class="alert alert-danger d-none" role="alert"></div>
+          <div class="row" id="getDatas">
+              <div class="col-md-12">
+                  <div class="event-list">
+                    <p></p>
+                <p></p>
+                <p></p>
+                <hr>
+                  </div>
+              </div>
+          </div>
       </div>
-    </section>
+  </section>
+  
+          
+  
 
 	<!-- Modal for Notification Remarks -->
     <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel" aria-hidden="true">
@@ -188,72 +172,9 @@
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
 
     <script>
-      // Sample data (replace with actual data from your backend)
-      const events = [
-        {
-          date: "2023-01-01",
-          time: "10:00 AM",
-          event_name: "Event 1",
-          event_desc: "Description 1",
-        },
-        {
-          date: "2023-01-02",
-          time: "02:00 PM",
-          event_name: "Event 2",
-          event_desc: "Description 2",
-        },
-        // Add more events as needed
-      ];
-
-      // Dynamically generate tabs based on dates
-      const tabsContainer = document.getElementById("v-pills-tab");
-      const contentContainer = document.getElementById("v-pills-tabContent");
-
-      events.forEach((event, index) => {
-        const tabId = `v-pills-${index + 1}-tab`;
-        const tabPaneId = `v-pills-${index + 1}`;
-
-        // Create tab
-        const tab = document.createElement("a");
-        tab.classList.add("nav-link", "ftco-animate");
-        tab.id = tabId;
-        tab.setAttribute("data-toggle", "pill");
-        tab.href = `#${tabPaneId}`;
-        tab.role = "tab";
-        tab.setAttribute("aria-controls", tabPaneId);
-        tab.setAttribute("aria-selected", index === 0 ? "true" : "false");
-        tab.innerText = event.date;
-        tabsContainer.appendChild(tab);
-
-        // Create tab pane
-        const tabPane = document.createElement("div");
-        tabPane.classList.add("tab-pane", "fade", index === 0 ? "show" : "");
-        tabPane.id = tabPaneId;
-        tabPane.role = "tabpanel";
-        tabPane.setAttribute("aria-labelledby", tabId);
-
-        // Create event content within tab pane
-        const speakerWrap = document.createElement("div");
-        speakerWrap.classList.add("speaker-wrap", "ftco-animate", "d-flex");
-
-        const text = document.createElement("div");
-        text.classList.add("text", "pl-md-5");
-        text.innerHTML = `
-		<span class="time">${event.time}</span>
-		<h2><a href="#">${event.event_name}</a></h2>
-		<p>${event.event_desc}</p>
-	  `;
-
-        speakerWrap.appendChild(text);
-        tabPane.appendChild(speakerWrap);
-        contentContainer.appendChild(tabPane);
-      });
-
 	  	 // Handle notification click to show the corresponding modal content
 		   document.addEventListener('DOMContentLoaded', function () {
         const notificationLinks = document.querySelectorAll('.dropdown-item');

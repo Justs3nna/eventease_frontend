@@ -1,10 +1,10 @@
-import { setRouter } from "../router/router.js";
+//import { setRouter } from "../router/router.js";
 
 // Set Router
-setRouter();
+//setRouter();
 
 // Backend URL sa NGROK
-const backendURL = "https://8a27-210-1-112-249.ngrok-free.app/eventease-backend/public";
+const backendURL = "https://e65c-210-1-112-249.ngrok-free.app/eventease-backend/public";
 
 // Notifications
 function successNotification(message, seconds = 0) {

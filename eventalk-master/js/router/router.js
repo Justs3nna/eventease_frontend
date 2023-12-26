@@ -20,8 +20,8 @@ function setRouter() {
             break;
         case "/organizer-dashboard.html":
         case "/admin-dashboard.html":
-        //case "/eventcreate.html":
-        //case "/pending-requests.html":
+        case "/eventcreate.html":
+        case "/pending-requests.html":
             if (localStorage.getItem("token") == null) {
                 window.location.pathname = "/index.html";
             }
