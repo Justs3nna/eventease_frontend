@@ -1,4 +1,4 @@
-import { backendURL, errorNotification } from "../utils/utils.js";
+import { getLoggedUser, backendURL, errorNotification } from "../utils/utils.js";
 
 const btn_logout = document.getElementById("btn_logout");
 
@@ -40,39 +40,6 @@ btn_logout.onclick = async () => {
 
 };
 
-getLoggedUser();
-
-async function getLoggedUser() {
-    // Access User Profile API Endpoint
-    const response = await fetch(backendURL + "/api/organizer/show", {
-      headers: {
-        Accept: "application/json",
-        "ngrok-skip-browser-warning": "69420",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    });
-  
-    // Get response if 200-299 status code
-    if (response.ok) {
-      const json = await response.json();
-  
-      document.getElementById("user_logged").innerHTML =
-        json.email + " ";
-  
-      if (document.getElementById("organizer_id")) {
-        document.getElementById("organizer_id").value = json.id;
-      }
-    }
-    // Get response if 400 or 500 status code
-    else {
-      const json = await response.json();
-  
-      errorNotification(json.message, 10);
-    }
-  }
-
-
-
 // Get all data
 getDatas();
 
@@ -89,24 +56,35 @@ async function getDatas() {
         const json = await response.json();
 
         let container = "";
+
         json.forEach((element) =>  {
             const date = new Date(element.created_at).toLocaleString();
 
-            container += 
-            `<div class="row" id="getDatas">
-              <div class="col-md-12">
-                  <div class="event-list">
-                    <p>Event ID: ${element.event_id}</p>
-                <p>Date: ${element.date_sel}</p>
-                <p>Time: ${element.time_sel}</p>
-                <hr>
-                  </div>
-              </div>
-          </div>`
+            container += `
+            <div class="row mb-4 col-md-12">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="col-md-12 row card-body">
+                            <p class="col-12 card-text">Event Name: ${element.event_name}</p>
+                            <p class="col-12 card-text">Description: ${element.event_desc}</p>
+                            <p class="col-12 card-text">Venue: ${element.venue_name}</p>
+                            <p class="col-12 card-text">Date: ${element.date_sel}</p>
+                            <p class="col-12 card-text">Time: ${element.time_sel}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated: ${date}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
         });
 
+
+        // Use innerHTML to replace the content of the container element
         document.getElementById("getDatas").innerHTML = container;
     } else {
+        // Handle HTTP errors
         errorNotification("HTTP-Error: " + response.status);
     }
 }
+

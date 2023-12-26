@@ -42,7 +42,7 @@
       id="ftco-navbar"
     >
       <div class="container">
-        <a class="navbar-brand" href="{{ route('organizer-dashboard') }}"
+        <a class="navbar-brand" href=""
           >Event<span>Ease.</span></a
         >
         <button
@@ -102,36 +102,12 @@
           <div class="row" id="getDatas">
               <div class="col-md-12">
                   <div class="event-list">
-                    <p></p>
-                <p></p>
-                <p></p>
-                <hr>
                   </div>
               </div>
           </div>
       </div>
   </section>
   
-          
-  
-
-	<!-- Modal for Notification Remarks -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h5 class="modal-title" id="notificationModalLabel">Notification Remarks</h5>
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
-			<div class="modal-body">
-			  <!-- Remarks content will be dynamically generated here -->
-			  <p>Notification remarks go here.</p>
-			</div>
-		  </div>
-		</div>
-	  </div>
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
@@ -169,24 +145,8 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
     <script src="js/main.js"></script>
 
-    <script>
-	  	 // Handle notification click to show the corresponding modal content
-		   document.addEventListener('DOMContentLoaded', function () {
-        const notificationLinks = document.querySelectorAll('.dropdown-item');
-        notificationLinks.forEach(link => {
-          link.addEventListener('click', function () {
-            // Extract the notification text from the link and update the modal content
-            const notificationText = this.innerText;
-            const modalBody = document.querySelector('#notificationModal .modal-body');
-            modalBody.innerHTML = `<p>${notificationText}</p>`;
-          });
-        });
-      });
-    </script>
   </body>
 </html>

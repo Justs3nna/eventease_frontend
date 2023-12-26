@@ -1,67 +1,89 @@
-import { backendURL, successNotification, errorNotification } from "../utils/utils.js";
+import { backendURL, errorNotification, successNotification } from "../utils/utils.js";
 
+const btn_logout = document.getElementById("btn_logout");
 
-// Form Login
-const form_login = document.getElementById("form_login");
+btn_logout.onclick = async () => {
+    //alert("ma click siya");
 
-form_login.onsubmit = async (e) => {
-    e.preventDefault();
-
-    //Disable Button
-    document.querySelector("#form_login button").disabled = true;
-    document.querySelector("#form_login button").innerHTML = `<div class="spinner-border me-2" role="status">
-                </div>
-                <span>Loading...</span>`;
-
-    // Tanggalon ra nato ni pag finalize
-    console.log('ma click ang login button');
-
-    // Pagkuha sa Value sa form (input ug select) set it as form-data
-    const formData = new FormData(form_login);
-
-
-    // Fetch API user login endpoint
-    const response = await fetch(backendURL + "/api/login", {
-        method: "POST",
-        headers: {
+        // Access Logout API endpoint
+        const response = await fetch(backendURL + "/api/logout", {
+            //gi comment kay on default daw ang GET // refer sa video nalang if maglibog or naay utruhon basa sa notes
+            //method: "POST",
+          headers: {
             Accept: "application/json",
-        },                      
-        body: formData,
-    });
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          }
+        }); 
+    
+         // Get response if 200-299 status code
+         if (response.ok) {
+            
+            //clear token sa storage
+            localStorage.clear();
+            //pwedi nadaw kwaon
+            //const json = await response.json();
+            //successNotification("Logout Successful.")
+            
+            // Redirect Page
+            window.location.pathname = "/index.html";
+            alert("Logout Successful.");
+       
+        }
+    
+        // Get response if 400 or 500 status code
+        else {
+            const json = await response.json();
+    
+            errorNotification(json.message, 10);
+        }
 
-     // Get response if 200-299 status code
-     if (response.ok) {
-        const json = await response.json();
-        // Tanggalon ning console log upon finalization
-        console.log(json);
-
-        localStorage.setItem("token", json.token);
-
-        form_login.reset();
-
-        successNotification("Successfully Logged in.", 5);
-
-        window.location.pathname = "/organizer-dashboard.html";
-
-        // // Check the user role and redirect accordingly
-        // if (json.role === "organizer") {
-        //     window.location.pathname = "/organizer-dashboard.html";
-        // } //else if (json.role === "administrator") {
-        //    // window.location.pathname = "/admin-dashboard.html";
-        //  else {
-        //     // Handle other roles or unknown roles
-        //     console.error("Unknown user role:", json.role);
-        // }
-}
-
-    // Get response if 422 status code
-    else if (response.status == 422) {
-        const json = await response.json();
-
-        errorNotification(json.message, 5);
-    }
-
-    // Enable Button
-    document.querySelector("#form_login button").disabled = false;
-    document.querySelector("#form_login button").innerHTML = `Login`;
 };
+
+const eventForm = document.getElementById("event_req");
+
+    eventForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+
+      // Validate and format time_sel
+      const timeInput = eventForm.querySelector("#startTime");
+      const enteredTime = timeInput.value.trim();
+
+      // Use a regular expression to check if the entered time matches the format "H:i A"
+      const timeFormatRegex = /^\s*(0?[1-9]|1[0-2]):[0-5][0-9] ?(?:[APap][Mm])?\s*$/;
+
+      if (!timeFormatRegex.test(enteredTime)) {
+        alert("Invalid time format. Please use the format H:i A (e.g., 12:30 PM).");
+        return;
+      }
+
+      const formData = new FormData(eventForm);
+
+      try {
+        const response = await fetch(backendURL + "/api/event", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "ngrok-skip-browser-warning": "69420",
+          },
+          body: formData,
+        });
+
+        if (response.ok) {
+          const json = await response.json();
+          console.log(json);
+          // Handle success, if needed
+          eventForm.reset();
+
+          successNotification("Request successfully sent.", 5);
+        } else {
+          const errorData = await response.json();
+          console.error("Error:", errorData);
+          errorNotification("Venue or Resource is not available", 5);
+          // Handle error, if needed
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Handle unexpected errors, if needed
+      }
+    });

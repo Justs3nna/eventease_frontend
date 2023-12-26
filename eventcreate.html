@@ -32,25 +32,57 @@
   </head>
   <body>
     
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="">Event<span>Ease.</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href=""
+          >Event<span>Ease.</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-			  <li class="nav-item active"><a href="" class="nav-link">Event Creation</a></li>
-	          <li class="nav-item active"><a href="organizer-dashboard.html" class="nav-link">Schedule</a></li>
-	          <li class="nav-item cta mr-md-2"><a href="index.html" class="nav-link">Logout</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <!--<li class="nav-item active"><a href="{{ route('eventcreate') }}" class="nav-link">Event Creation</a></li>-->
+            <li class="nav-item active">
+              <a href="" class="nav-link">Event Creation</a>
+            </li>
+            <li class="nav-item active">
+              <a href="organizer-dashboard.html" class="nav-link">Schedule</a>
+            </li>
+            <!-- Add the notification bell icon and button -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span id="user_logged"></span>
+            </li>
+            <li class="nav-item cta mr-md-2">
+              <button class="btn btn-primary nav-link" type="submit" id="btn_logout">Logout</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <!-- END nav -->
 
-    
     <section class="ftco-section bg-light">
 			<div class="container">
 				<div class="row justify-content-center mb-5 pb-3">
@@ -59,51 +91,77 @@
             <h2 class="mb-4"><span>Create</span>Event</h2>
           </div>
         </div>
-<!-- Event Creation Form -->
+
+        <!-- Notification -->
+        <div class="alert alert-success d-none" role="alert"></div>
+        <div class="alert alert-danger d-none" role="alert"></div>
+  <h2 class="mb-4">Request New Event</h2>
+  <form id="event_req">
+    <label for="org">ID</label>
+    <select class="form-control" id="organizer_id" name="organizer_id" required>
+      <option value="1" selected>Organizer</option>
+    </select>	
+    <label for="eventName">Event Name</label>
+    <input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="event_name" required>		
+    <label for="eventDescription">Event Description</label>
+    <textarea class="form-control" id="eventDescription" rows="3" placeholder="Enter event description" name="event_desc" required></textarea>
+    <label for="venueId">Venue</label>
+    <select class="form-control" id="venueId" name="venue_id" required>
+      <option value="1">Auditorium</option>
+      <option value="2">Conference Hall</option>
+      <option value="3">Open Field</option>
+    </select>	
+    <label for="startDate">Start Date</label>
+    <input type="text" class="form-control" id="startDate" placeholder="Enter start date" name="date_sel" required>	
+    <label for="startTime">Start Time</label>
+    <input type="text" class="form-control" id="startTime" placeholder="Enter start time" name="time_sel" required>
+    <label for="resourceId">Resources</label>
+    <select class="form-control" id="resourceId" name="resource_id" required>
+      <option value="1">Projector</option>
+      <option value="2">Tables & Chairs</option>
+      <option value="3">Audio</option>
+    </select>	
+    <button type="submit" class="btn btn-primary my-3">Submit</button>
+  </form>
+
+
+<!-- Event Creation Form
 <div class="container mt-5">
 	<h2 class="mb-4">Request New Event</h2>
-	<form>
-	  <div class="form-group">
-		<label for="eventName">Event Name</label>
-		<input type="text" class="form-control" id="eventName" placeholder="Enter event name">
-	  </div>
-	  <div class="form-group">
-		<label for="eventDescription">Event Description</label>
-		<textarea class="form-control" id="eventDescription" rows="3" placeholder="Enter event description"></textarea>
-	  </div>
-	  <div class="form-group">
-		<label for="venueDropdown">Select Venue</label>
-		<select class="form-control" id="venueDropdown">
-		  <option>{{venue_name}}</option>
-		  <option>{{venue_name}}</option>
-		  <option>{{venue_name}}</option>
-		</select>
-	  </div>
-	  <div class="form-group row">
-		<div class="col-md-6">
-		  <label for="startDate">Event Start Date</label>
-		  <input type="date" class="form-control" id="date_sel">
+	<form id="event_req">
+		<div class="form-group">
+			<label for="eventName">Event Name</label>
+			<input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="event_name" required>																																																																																																																																																																			
 		</div>
-		<div class="col-md-6">
-		  <label for="startTime">Event Start Time</label>
-		  <input type="time" class="form-control" id="time_sel">
+		<div class="form-group">
+			<label for="eventDescription">Event Description</label>
+			<textarea class="form-control" id="eventDescription" rows="3" placeholder="Enter event description" name="event_desc" required></textarea>
 		</div>
-	  </div>
-    <!-- Resources Needed -->
-    <div class="form-group">
-		<label>Resources Needed</label>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="resource1Checkbox">
-        <label class="form-check-label" for="resource1Checkbox">{{resource_id}}</label>
-        <span id="resource1Availability" class="ml-2 text-muted">(Availability: {{ $availability }})</span>
-        <input type="text" class="form-control smaller-input" id="resource1Amount" placeholder="Amount" style="display: none;">
-    </div>
-	  </div>
-	  <div class="form-group text-right">
-		<button type="submit" class="btn btn-primary">Request Event</button>
-	  </div>
-	</form>
-  </div>
+		<div class="form-group">
+			<label for="venueDropdown">Select Venue</label>
+			<select class="form-control" id="venueDropdown" name="venue_id" required>
+        <option value="1">Auditorium</option>
+        <option value="2">Conference Room</option>
+        <option value="3">Open Field</option>
+    </select>    
+		</div>
+		<div class="form-group row">
+			<div class="col-md-6">
+				<label for="startDate">Event Start Date</label>
+				<input type="date" class="form-control" id="startDate" name="date_sel" required>
+			</div>
+			<div class="col-md-6">
+				<label for="startTime">Event Start Time</label>
+				<input type="time" class="form-control" id="startTime" name="time_sel" required>
+			</div>
+		</div>
+		
+		</div>
+		<div class="form-group text-right">
+			<button type="submit" class="btn btn-primary" id="event_req">Request Event</button>
+		</div>
+	</form>	
+  </div> -->
     
   
 
@@ -112,31 +170,21 @@
 
 
   <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-
-  <script>
-	// Toggle visibility of resource amount fields based on checkbox state
-	document.getElementById("resource1Checkbox").addEventListener("change", function () {
-	  document.getElementById("resource").style.display = this.checked ? "block" : "none";
-	});
-
-	// Add more listeners for additional resources if needed
-  </script>
+<!-- <script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script> -->
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&sensor=false"></script>
+<script src="js/google-map.js"></script> -->
+<script src="js/main.js"></script>
     
   </body>
 </html>
