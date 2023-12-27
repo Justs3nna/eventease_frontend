@@ -1,4 +1,6 @@
-import { backendURL, errorNotification, successNotification } from "../utils/utils.js";
+import { backendURL, errorNotification, successNotification, getLoggedUser } from "../utils/utils.js";
+
+getLoggedUser();
 
 const btn_logout = document.getElementById("btn_logout");
 

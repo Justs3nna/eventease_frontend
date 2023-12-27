@@ -13,8 +13,8 @@ form_login.onsubmit = async (e) => {
                 </div>
                 <span>Loading...</span>`;
 
-    // Tanggalon ra nato ni pag finalize
-    console.log('ma click ang login button');
+    // // Tanggalon ra nato ni pag finalize
+    // console.log('ma click ang login button');
 
     // Pagkuha sa Value sa form (input ug select) set it as form-data
     const formData = new FormData(form_login);

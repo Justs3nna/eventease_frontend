@@ -1,5 +1,7 @@
 import { getLoggedUser, backendURL, errorNotification } from "../utils/utils.js";
 
+getLoggedUser();
+
 const btn_logout = document.getElementById("btn_logout");
 
 btn_logout.onclick = async () => {
