@@ -4,7 +4,7 @@ import { setRouter } from "../router/router.js";
 setRouter();
 
 // Backend URL sa NGROK
-const backendURL = "https://f78d-175-176-84-122.ngrok-free.app/eventease-backend/public";
+const backendURL = "https://62c8-61-245-13-115.ngrok-free.app/eventease-backend/public";
 
 // Notifications
 function successNotification(message, seconds = 0) {
